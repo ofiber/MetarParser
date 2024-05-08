@@ -1,15 +1,7 @@
-﻿using System.Collections.ObjectModel;
-using System.IO;
+﻿using System.IO;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace MetarAppWPF
 {
@@ -18,6 +10,9 @@ namespace MetarAppWPF
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        private readonly string invalidLengthMsg = "ICAO must be 4 characters in length!";
+        private readonly string invalidICAOMsg = "Invalid ICAO!";
 
         public MainWindow()
         {
@@ -33,7 +28,7 @@ namespace MetarAppWPF
             // Check if the ICAO code is valid
             if (icao.Length != 4)
             {
-                //MessageBox.Show(invalidLengthMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(invalidLengthMsg, "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
@@ -43,7 +38,7 @@ namespace MetarAppWPF
             // Check if the METAR data is valid
             if (metar == null || metar == "-1")
             {
-                //MessageBox.Show(invalidICAOMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(invalidICAOMsg, "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
