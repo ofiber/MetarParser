@@ -10,7 +10,6 @@ namespace MetarAppWPF
     /// </summary>
     public partial class MainWindow : Window
     {
-
         private readonly string invalidLengthMsg = "ICAO must be 4 characters in length!";
         private readonly string invalidICAOMsg = "Invalid ICAO!";
 
