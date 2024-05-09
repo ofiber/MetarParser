@@ -19,7 +19,7 @@ namespace MetarAppWPF
             this.Title = "METAR Parser";
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void SubmitICAOBtn_Click(object sender, RoutedEventArgs e)
         {
             // Get the ICAO code from the textbox
             string icao = icaoTB.Text;
@@ -51,6 +51,12 @@ namespace MetarAppWPF
             metarTbEnc.Text = MetarParser.GetEncodedMetarAsString();
             metarTbDec.Text = MetarParser.GetDecodedMetarAsString();
             
+        }
+
+        private void ExitBtn_Click(object sender, RoutedEventArgs e)
+        {
+            // Shutdown the application on exit button click
+            Application.Current.Shutdown();
         }
 
         private void ICAOPage()

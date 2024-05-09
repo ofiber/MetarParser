@@ -7,10 +7,11 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="550" Width="900" Background="#FF7192A7">
     <Grid Background="#FF5F8798">
-        <Label x:Name="icaoLbl" Content="Enter an ICAO" HorizontalAlignment="Center" Margin="0,145,0,0" VerticalAlignment="Top" FontFamily="CommitMono" FontSize="24" FontWeight="Bold" Visibility="Visible"/>
-        <TextBox x:Name="icaoTB" HorizontalAlignment="Center" Margin="0,186,0,0" VerticalAlignment="Top" Width="196" Height="29" FontFamily="CommitMono" FontSize="28" FontWeight="Bold" TextAlignment="Center" Visibility="Visible"/>
-        <Button x:Name="submitIcaoBtn" Content="SUBMIT" HorizontalAlignment="Center" Margin="0,220,0,0" VerticalAlignment="Top" Width="196" Height="29" FontFamily="CommitMono" FontSize="26" FontWeight="Bold" Click="Button_Click" Visibility="Visible"/>
+        <Label x:Name="icaoLbl" Content="Enter an ICAO" HorizontalAlignment="Center" Margin="0,192,0,0" VerticalAlignment="Top" FontFamily="CommitMono" FontSize="24" FontWeight="Bold" Visibility="Visible"/>
+        <TextBox x:Name="icaoTB" HorizontalAlignment="Center" Margin="0,233,0,0" VerticalAlignment="Top" Width="196" Height="29" FontFamily="CommitMono" FontSize="28" FontWeight="Bold" TextAlignment="Center" Visibility="Visible"/>
+        <Button x:Name="submitIcaoBtn" Content="SUBMIT" HorizontalAlignment="Center" Margin="0,267,0,0" VerticalAlignment="Top" Width="196" Height="29" FontFamily="CommitMono" FontSize="26" FontWeight="Bold" Click="SubmitICAOBtn_Click" Visibility="Visible" IsDefault="True"/>
         <TextBox x:Name="metarTbDec" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="880" Height="372" FontFamily="CommitMono" FontWeight="Bold" FontSize="22" Visibility="Hidden" Background="#FF5F8798" Margin="0,145,0,0"/>
         <TextBox x:Name="metarTbEnc" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="880" Height="130" FontFamily="CommitMono" FontWeight="Bold" FontSize="22" Visibility="Hidden" Background="#FF5F8798" Margin="0,10,0,0"/>
+        <Button x:Name="exitBtn" Content="EXIT" Margin="732,473,0,0" FontFamily="CommitMono" FontSize="26" FontWeight="Bold" Click="ExitBtn_Click" Visibility="Visible" RenderTransformOrigin="1,1" Height="29" VerticalAlignment="Top" HorizontalAlignment="Left" Width="131" IsCancel="True"/>
     </Grid>
 </Window>
