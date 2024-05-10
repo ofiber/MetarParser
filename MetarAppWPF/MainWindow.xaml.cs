@@ -10,6 +10,7 @@ namespace MetarAppWPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        // Invalid entry error messages
         private readonly string invalidLengthMsg = "ICAO must be 4 characters in length!";
         private readonly string invalidICAOMsg = "Invalid ICAO!";
 
@@ -27,6 +28,7 @@ namespace MetarAppWPF
             // Check if the ICAO code is valid
             if (icao.Length != 4)
             {
+                // If invalid, show error message and return
                 MessageBox.Show(invalidLengthMsg, "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
@@ -37,6 +39,7 @@ namespace MetarAppWPF
             // Check if the METAR data is valid
             if (metar == null || metar == "-1")
             {
+                // If invalid, show error message and return
                 MessageBox.Show(invalidICAOMsg, "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
@@ -45,12 +48,12 @@ namespace MetarAppWPF
             ICAOPage();
             METARPage();
 
-            // Write the METAR data to the textbox
+            // Parse the METAR
             MetarParser.GetParsedMetar(metar);
 
+            // Write original and parsed METAR to text boxes
             metarTbEnc.Text = MetarParser.GetEncodedMetarAsString();
             metarTbDec.Text = MetarParser.GetDecodedMetarAsString();
-            
         }
 
         private void ExitBtn_Click(object sender, RoutedEventArgs e)
@@ -61,6 +64,7 @@ namespace MetarAppWPF
 
         private void ICAOPage()
         {
+            // Show or hide ICAO entry elements
             if(icaoTB.IsVisible)
             {
                 icaoTB.Visibility = Visibility.Hidden;
@@ -77,6 +81,7 @@ namespace MetarAppWPF
 
         private void METARPage()
         {
+            // Show or hide METAR display elements
             if(metarTbEnc.IsVisible)
             {
                 metarTbEnc.Visibility = Visibility.Hidden;
@@ -90,6 +95,10 @@ namespace MetarAppWPF
         }
     }
 
+    /// <summary>
+    /// Allows use of Console.Write/WriteLine calls
+    /// to be output to WPF elements instead of consol
+    /// </summary>
     public class ControlWriter : TextWriter
     {
         private Control textbox;
