@@ -12,6 +12,7 @@
         <Button x:Name="submitIcaoBtn" Content="SUBMIT" HorizontalAlignment="Center" Margin="0,267,0,0" VerticalAlignment="Top" Width="196" Height="29" FontFamily="CommitMono" FontSize="26" FontWeight="Bold" Click="SubmitICAOBtn_Click" Visibility="Visible" IsDefault="True"/>
         <TextBox x:Name="metarTbDec" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="880" Height="372" FontFamily="CommitMono" FontWeight="Bold" FontSize="22" Visibility="Hidden" Background="#FF5F8798" Margin="0,145,0,0"/>
         <TextBox x:Name="metarTbEnc" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="880" Height="130" FontFamily="CommitMono" FontWeight="Bold" FontSize="22" Visibility="Hidden" Background="#FF5F8798" Margin="0,10,0,0"/>
-        <Button x:Name="exitBtn" Content="EXIT" Margin="732,473,0,0" FontFamily="CommitMono" FontSize="26" FontWeight="Bold" Click="ExitBtn_Click" Visibility="Visible" RenderTransformOrigin="1,1" Height="29" VerticalAlignment="Top" HorizontalAlignment="Left" Width="131" IsCancel="True"/>
+        <Button x:Name="exitBtn" Content="EXIT" Margin="792,474,0,0" FontFamily="CommitMono" FontSize="26" FontWeight="Bold" Click="ExitBtn_Click" Visibility="Visible" RenderTransformOrigin="1,1" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Width="80" IsCancel="True"/>
+        <Button x:Name="backBtn" Content="BACK" Margin="792,440,0,0" FontFamily="CommitMono" FontSize="26" FontWeight="Bold" Click="BackBtn_Click" RenderTransformOrigin="1,1" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Width="80" Visibility="Hidden"/>
     </Grid>
 </Window>

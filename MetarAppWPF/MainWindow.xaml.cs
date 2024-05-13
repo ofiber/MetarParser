@@ -62,6 +62,21 @@ namespace MetarAppWPF
             Application.Current.Shutdown();
         }
 
+        private void BackBtn_Click(object sender, RoutedEventArgs e)
+        {
+            //Console.Clear();
+
+            metarTbEnc.Clear();
+            metarTbDec.Clear();
+
+            icaoTB.Clear();
+
+            MetarParser.ResetMetarStrings();
+
+            METARPage();
+            ICAOPage();
+        }
+
         private void ICAOPage()
         {
             // Show or hide ICAO entry elements
@@ -70,12 +85,14 @@ namespace MetarAppWPF
                 icaoTB.Visibility = Visibility.Hidden;
                 icaoLbl.Visibility = Visibility.Hidden;
                 submitIcaoBtn.Visibility = Visibility.Hidden;
+                backBtn.Visibility = Visibility.Hidden;
             }
             else
             {
                 icaoTB.Visibility = Visibility.Visible;
                 icaoLbl.Visibility = Visibility.Visible;
                 submitIcaoBtn.Visibility = Visibility.Visible;
+                backBtn.Visibility = Visibility.Visible;
             }
         }
 
@@ -86,11 +103,13 @@ namespace MetarAppWPF
             {
                 metarTbEnc.Visibility = Visibility.Hidden;
                 metarTbDec.Visibility = Visibility.Hidden;
+                backBtn.Visibility = Visibility.Hidden;
             }
             else
             {
                 metarTbEnc.Visibility = Visibility.Visible;
                 metarTbDec.Visibility = Visibility.Visible;
+                backBtn.Visibility = Visibility.Visible;
             }
         }
     }

@@ -763,5 +763,7 @@ namespace MetarAppWPF
 
         public static string GetEncodedMetarAsString() {  return encodedMetar.ToString(); }
         public static string GetDecodedMetarAsString() { return decodedMetar.ToString(); }
+
+        public static void ResetMetarStrings() { decodedMetar.Clear(); encodedMetar.Clear(); }
     }
 }
