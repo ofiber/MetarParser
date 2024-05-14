@@ -8,4 +8,12 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="upscaler-bkg_2-2x.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="upscaler-bkg_2-2x.jpg" />
+  </ItemGroup>
+
 </Project>

@@ -66,15 +66,21 @@ namespace MetarAppWPF
         {
             //Console.Clear();
 
-            metarTbEnc.Clear();
-            metarTbDec.Clear();
+            // If on main menu, do nothing
+            if(metarTbDec.Visibility == Visibility.Hidden)
+                return;
+            else
+            {
+                metarTbEnc.Clear();
+                metarTbDec.Clear();
 
-            icaoTB.Clear();
+                icaoTB.Clear();
 
-            MetarParser.ResetMetarStrings();
+                MetarParser.ResetMetarStrings();
 
-            METARPage();
-            ICAOPage();
+                METARPage();
+                ICAOPage();
+            }
         }
 
         private void ICAOPage()
