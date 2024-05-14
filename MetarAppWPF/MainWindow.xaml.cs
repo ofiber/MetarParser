@@ -1,7 +1,9 @@
 ﻿using System.IO;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Interop;
 
 namespace MetarAppWPF
 {
