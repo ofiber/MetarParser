@@ -13,6 +13,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="DarkNet" Version="2.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="upscaler-bkg_2-2x.jpg" />
   </ItemGroup>
 

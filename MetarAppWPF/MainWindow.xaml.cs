@@ -4,6 +4,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Interop;
+using Dark.Net; // Used for Light/Dark mode
 
 namespace MetarAppWPF
 {
@@ -18,6 +19,9 @@ namespace MetarAppWPF
 
         public MainWindow()
         {
+            // Set application theme to user's system theme
+            DarkNet.Instance.SetWindowThemeWpf(this, Theme.Auto);
+
             InitializeComponent();
             this.Title = "METAR Parser";
         }

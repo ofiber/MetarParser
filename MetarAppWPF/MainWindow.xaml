@@ -10,13 +10,13 @@
         <ImageBrush ImageSource="/upscaler-bkg_2-2x.jpg"/>
     </Window.Background>
     <Grid>
-        <Label x:Name="icaoLbl" FontFamily="CommitMono" FontSize="24" FontWeight="Bold" Background="{x:Null}" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Margin="0,-70,0,50" Width="200" Height="35">Enter an ICAO</Label>
-        <TextBox x:Name="icaoTB" BorderThickness="1" Width="90" Height="30" FontFamily="CommitMono" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Margin="0,-50,96,0" Background="{x:Null}"/>
-        <Button x:Name="submitIcaoBtn" Click="SubmitICAOBtn_Click" IsDefault="True" FontFamily="CommitMono" FontSize="20" FontWeight="Bold" Background="{x:Null}" Width="80" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="106,-50,0,0">SUBMIT</Button>
+        <Label x:Name="icaoLbl" FontFamily="CommitMono" FontSize="24" FontWeight="Bold" Background="{x:Null}" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Margin="0,-150,0,50" Width="200" Height="35">Enter an ICAO</Label>
+        <TextBox x:Name="icaoTB" BorderThickness="1" Width="90" Height="30" FontFamily="CommitMono" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Margin="0,-130,96,0" Background="{x:Null}"/>
+        <Button x:Name="submitIcaoBtn" Click="SubmitICAOBtn_Click" FontFamily="CommitMono" FontSize="20" FontWeight="Bold" Background="{x:Null}" Width="80" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="106,-130,0,0">SUBMIT</Button>
         
-        <Label x:Name="metarLbl" Margin="0, 135, 0, 0" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="CommitMono" FontSize="24" FontWeight="Bold">Enter a METAR</Label>
-        <TextBox x:Name="usrMetarTb" Margin="0, 200, 0, 0" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="CommitMono" FontSize="24" FontWeight="Bold" Width="200" Height="30" Background="{x:Null}"></TextBox>
-        <Button x:Name="submitMetarBtn" Click="SubmitMETARBtn_Click"  Margin="0, 275, 0, 0" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="CommitMono" FontSize="20" FontWeight="Bold" Background="{x:Null}" Width="80" Height="30">SUBMIT</Button>
+        <Label x:Name="metarLbl" Margin="0, 55, 0, 0" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="CommitMono" FontSize="24" FontWeight="Bold">Enter a METAR</Label>
+        <TextBox x:Name="usrMetarTb" Margin="0, 120, 0, 0" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="CommitMono" FontSize="24" FontWeight="Bold" Width="200" Height="30" Background="{x:Null}"></TextBox>
+        <Button x:Name="submitMetarBtn" Click="SubmitMETARBtn_Click" Margin="0, 195, 0, 0" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="CommitMono" FontSize="20" FontWeight="Bold" Background="{x:Null}" Width="80" Height="30">SUBMIT</Button>
         
         <Button x:Name="exitBtn" Click="ExitBtn_Click" Panel.ZIndex="1" Margin="15" Background="{x:Null}" FontFamily="CommitMono" FontSize="20" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="80" Height="30">EXIT</Button>
         <Button x:Name="backBtn" Click="BackBtn_Click" Panel.ZIndex="1" Margin="15, 50" FontFamily="CommitMono" FontSize="20" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{x:Null}" Width="80" Height="30">BACK</Button>
