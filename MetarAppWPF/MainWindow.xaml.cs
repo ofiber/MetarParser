@@ -58,6 +58,18 @@ namespace MetarAppWPF
             metarTbDec.Text = MetarParser.GetDecodedMetarAsString();
         }
 
+        private void SubmitMETARBtn_Click(object sender, RoutedEventArgs e)
+        {
+            string metar = usrMetarTb.Text;
+
+            ICAOPage();
+            METARPage();
+
+            MetarParser.GetParsedMetar(metar);
+
+            metarTbEnc.Text = MetarParser.GetEncodedMetarAsString();
+            metarTbDec.Text = MetarParser.GetDecodedMetarAsString();
+        }
         private void ExitBtn_Click(object sender, RoutedEventArgs e)
         {
             // Shutdown the application on exit button click
@@ -93,6 +105,9 @@ namespace MetarAppWPF
                 icaoTB.Visibility = Visibility.Hidden;
                 icaoLbl.Visibility = Visibility.Hidden;
                 submitIcaoBtn.Visibility = Visibility.Hidden;
+                metarLbl.Visibility = Visibility.Hidden;
+                usrMetarTb.Visibility = Visibility.Hidden;
+                submitMetarBtn.Visibility = Visibility.Hidden;
                 backBtn.Visibility = Visibility.Hidden;
             }
             else
@@ -100,6 +115,9 @@ namespace MetarAppWPF
                 icaoTB.Visibility = Visibility.Visible;
                 icaoLbl.Visibility = Visibility.Visible;
                 submitIcaoBtn.Visibility = Visibility.Visible;
+                metarLbl.Visibility = Visibility.Visible;
+                usrMetarTb.Visibility= Visibility.Visible;
+                submitMetarBtn.Visibility= Visibility.Visible;
                 backBtn.Visibility = Visibility.Visible;
             }
         }
@@ -124,7 +142,7 @@ namespace MetarAppWPF
 
     /// <summary>
     /// Allows use of Console.Write/WriteLine calls
-    /// to be output to WPF elements instead of consol
+    /// to be output to WPF elements instead of console
     /// </summary>
     public class ControlWriter : TextWriter
     {

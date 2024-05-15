@@ -32,6 +32,8 @@ namespace MetarAppWPF
             Regex time_regex = new Regex("\\b(\\d{6}Z)\\b");
             Regex wind_regex = new Regex("\\b(\\d{3}|VRB)(\\d{2}|\\d{2}G\\d{2})KT\\b");
             Regex peak_wind_regex = new Regex("\\b(PK WND)\\b\\s\\b(\\d{5}\\/\\d{4})\\b");
+            Regex windshear_regex = new Regex("\\bWS\\s(RWY\\d{2}[L|R|C])|(RWY\\d{2}\b)");
+            Regex windshift_regex = new Regex("\\bWSHFT\\s\\d{4}\\b");
             Regex visibility_regex = new Regex("\\b(\\d{1,2})SM\\b|\\b(\\d{4})\\b|\\b(([1-9]\\s)?([1-9]\\/[1-9])SM)|CAVOK\\b");
             Regex twr_vis_regex = new Regex("\\bTWR VIS [1-9]+\\s[1-9]\\/[1-9]|TWR VIS [1-9]+\\b");
             Regex surface_vis_regex = new Regex("\\bSFC\\sVIS\\s((\\d*\\s\\d\\/\\d)|(\\d\\/\\d))\\b");
@@ -41,8 +43,7 @@ namespace MetarAppWPF
             Regex alt_temp_regex = new Regex("((M?\\d{2})\\/(M?\\d{2}))");
             Regex altimeter_regex = new Regex("(A|Q)(\\d{4})");
             Regex remarks_regex = new Regex("RMK\\s(.*)");
-            Regex weather_regex = new Regex("(-|\\+)?\\b(MIFG|BCFG|BR|FG|DZ|RA|SN|SG|IC|PL|GR|GS|UP|BR|HZ|FU|VA|CG|DU|SA|PY|PO|SQ|FC|SS|DS)\\b");
-            Regex windshear_regex = new Regex("\\bWS\\s(RWY\\d{2}[L|R|C])|(RWY\\d{2}\b)");
+            Regex weather_regex = new Regex("(-|\\+)?\\b(MIFG|BCFG|BR|FG|DZ|RA|SN|SG|IC|PL|GR|GS|UP|BR|HZ|FU|VA|CG|DU|SA|PY|PO|SQ|FC|SS|DS)\\b");            
             Regex percip_regex = new Regex("\\b(P\\d{4})\\b");
             Regex percip_regex2 = new Regex("\\b(6\\d{4})\\b");
             Regex percip_regex3 = new Regex("\\b(7\\d{4})\\b");
@@ -62,6 +63,7 @@ namespace MetarAppWPF
             GetWinds(out matches, metar, wind_regex);
             GetPeakWind(out matches, metar, peak_wind_regex);
             GetWindshear(out matches, metar, windshear_regex);
+            GetWindshift(out matches, metar, windshift_regex);
             int x = GetVisibility(out matches, metar, visibility_regex);
             GetTowerVis(out matches, metar, twr_vis_regex);
             GetSurfaceVis(out matches, metar, surface_vis_regex);
@@ -242,6 +244,21 @@ namespace MetarAppWPF
 
             if (!string.IsNullOrEmpty(windshear))
                 decodedMetar.AppendLine("Windshear: " + windshear.Substring(0, 3) + " " + windshear.Substring(3, windshear.Length - 1));
+        }
+
+        private static void GetWindshift(out MatchCollection matches, string metar, Regex windshift_regex)
+        {
+            string windshift = "";
+
+            matches = windshift_regex.Matches(metar);
+
+            if (matches.Count > 0)
+                windshift = matches[0].Value;
+            else
+                windshift = "-1";
+
+            if (!string.IsNullOrEmpty(windshift))
+                decodedMetar.AppendLine("Windshift: " + windshift.Substring(windshift.IndexOf(" ") + 1) + " Z");
         }
 
         private static int GetVisibility(out MatchCollection matches, string metar, Regex visibility_regex)
