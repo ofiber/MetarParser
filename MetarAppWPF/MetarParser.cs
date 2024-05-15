@@ -254,8 +254,6 @@ namespace MetarAppWPF
 
             if (matches.Count > 0)
                 windshift = matches[0].Value;
-            else
-                windshift = "-1";
 
             if (!string.IsNullOrEmpty(windshift))
                 decodedMetar.AppendLine("Windshift: " + windshift.Substring(windshift.IndexOf(" ") + 1) + " Z");
