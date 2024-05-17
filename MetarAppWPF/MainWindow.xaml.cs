@@ -16,6 +16,7 @@ namespace MetarAppWPF
         // Invalid entry error messages
         private readonly string invalidLengthMsg = "ICAO must be 4 characters in length!";
         private readonly string invalidICAOMsg = "Invalid ICAO!";
+        private readonly string invalidMETARMsg = "The METAR you entered is invalid! Please try again.";
 
         public MainWindow()
         {
@@ -65,6 +66,13 @@ namespace MetarAppWPF
         private void SubmitMETARBtn_Click(object sender, RoutedEventArgs e)
         {
             string metar = usrMetarTb.Text;
+
+            if(!ValidateMetar.Validate(metar))
+            {
+                MessageBox.Show(invalidMETARMsg, "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                usrMetarTb.Clear();
+                return;
+            }
 
             ICAOPage();
             METARPage();

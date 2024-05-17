@@ -1,4 +1,6 @@
-﻿using System;
+﻿#pragma warning disable CS8603 // Possible null reference return.
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,62 +20,140 @@ namespace MetarAppWPF
         public static readonly Regex visibility_regex = new Regex("\\b(\\d{1,2})SM\\b|\\b(\\d{4})\\b|\\b(([1-9]\\s)?([1-9]\\/[1-9])SM)|CAVOK\\b");
         public static readonly Regex clouds_regex = new Regex("(FEW|SCT|BKN|OVC)((\\d{3})(CB)?)|(CLR)|(NCD)");
         public static readonly Regex temperature_regex = new Regex("\\bT(\\d{4})(\\d{4})\\b");
+        public static readonly Regex alt_temp_regex = new Regex("((M?\\d{2})\\/(M?\\d{2}))");
         public static readonly Regex altimeter_regex = new Regex("(A|Q)(\\d{4})");
 
-        string metar = "METAR KABC 021530Z 27007KT 10SM CLR 12/02 A2994 RMK AO2";
+        public static Dictionary<string, string> icao = ICAODict.icaoDict;
 
-        private bool Validate()
+        public static bool Validate(string metar)
         {
-            Console.WriteLine(Station());
+            if (string.IsNullOrEmpty(metar))
+                return false;
 
-            return true;
-        }
+            string[] arr = {
+                ValidateStation(metar),
+                ValidateTime(metar),
+                ValidateWind(metar),
+                ValidateVisibility(metar),
+                ValidateClouds(metar),
+                ValidateTemperature(metar),
+                ValidateAltimeter(metar)
+            };
 
-        private bool Station()
-        {
-            string station;
-
-            MatchCollection matches = station_regex.Matches(metar);
-
-            station = matches[0].ToString();
-
-            if (string.IsNullOrEmpty(station))
-            {
-                Console.WriteLine(station);
-                return true;  
-            }            
+            if(GetValidation(arr))
+                return true;
             else
                 return false;
         }
 
-        //private bool Time()
-        //{
+        private static bool GetValidation(string[] arr)
+        {
+            foreach (string s in arr)
+            {
+                if (s == null)
+                    return false;
+            }
 
-        //}
+            return true;
+        }
 
-        //private bool Wind()
-        //{
+        private static string ValidateStation(string metar)
+        {
+            Match match = station_regex.Match(metar);
 
-        //}
+            if (match.Success)
+            {
+                string station = match.Groups[1].Value;
 
-        //private bool Visibility()
-        //{
+                if (icao.ContainsKey(station))
+                    return icao[station];
+                else
+                    return null;
+            }
+            else
+                return null;
+        }
 
-        //}
+        private static string ValidateTime(string metar)
+        {
+            Match match = time_regex.Match(metar);
 
-        //private bool Clouds()
-        //{
+            if (match.Success)
+            {
+                return match.Groups[1].Value;
+            }
+            else
+                return null;
+        }
 
-        //}
+        private static string ValidateWind(string metar)
+        {
+            Match match = wind_regex.Match(metar);
 
-        //private bool Temperature()
-        //{
+            if (match.Success)
+            {
+                return match.Groups[0].Value;
+            }
+            else
+                return null;
+        }
 
-        //}
+        private static string ValidateVisibility(string metar)
+        {
+            Match match = visibility_regex.Match(metar);
 
-        //private bool Altimeter()
-        //{
+            if (match.Success)
+            {
+                return match.Groups[0].Value;
+            }
+            else
+                return null;
+        }
 
-        //}
+        private static string ValidateClouds(string metar)
+        {
+            Match match = clouds_regex.Match(metar);
+
+            if (match.Success)
+            {
+                return match.Groups[0].Value;
+            }
+            else
+                return null;
+        }
+
+        private static string ValidateTemperature(string metar)
+        {
+            Match match = temperature_regex.Match(metar);
+
+            if (match.Success)
+            {
+                return match.Groups[0].Value;
+            }
+            else
+            {
+                match = alt_temp_regex.Match(metar);
+
+                if (match.Success)
+                {
+                    return match.Groups[0].Value;
+                }
+                else
+                    return null;
+            }
+
+        }
+
+        private static string ValidateAltimeter(string metar)
+        {
+            Match match = altimeter_regex.Match(metar);
+
+            if (match.Success)
+            {
+                return match.Groups[0].Value;
+            }
+            else
+                return null;
+        }
     }
 }

@@ -44,6 +44,7 @@ namespace MetarAppWPF
             Regex alt_temp_regex = new Regex("((M?\\d{2})\\/(M?\\d{2}))");
             Regex altimeter_regex = new Regex("(A|Q)(\\d{4})");
             Regex remarks_regex = new Regex("RMK\\s(.*)");
+            Regex sea_level_pressure_regex = new Regex("\\bSLP\\d{3}\\b");
             Regex weather_regex = new Regex("(-|\\+)?\\b(MIFG|BCFG|BR|FG|DZ|RA|SN|SG|IC|PL|GR|GS|UP|BR|HZ|FU|VA|CG|DU|SA|PY|PO|SQ|FC|SS|DS)\\b");            
             Regex percip_regex = new Regex("\\b(P\\d{4})\\b");
             Regex percip_regex2 = new Regex("\\b(6\\d{4})\\b");
@@ -76,6 +77,7 @@ namespace MetarAppWPF
 
             GetTempAndDewpoint(out matches, metar, temperature_regex, alt_temp_regex);
             GetAltimeter(out matches, metar, altimeter_regex);
+            GetSeaLevelPressure(sea_level_pressure_regex, metar);
             GetWeather(out matches, metar, remarks_regex, weather_regex, weatherMap);
             GetRecentPercip(out matches, metar, percip_regex, percip_regex2, percip_regex3);
             GetCumulonimbusActivity(out matches, metar, cumulonimbus_regex, cbMovement_regex, cbMap);
@@ -569,7 +571,11 @@ namespace MetarAppWPF
                 if (altimeter[0] == 'A')
                 {
                     altimeter = altimeter.Remove(0, 1);
-                    decodedMetar.AppendLine("Altimeter: " + altimeter.Insert(2, ".") + " inHg");
+                    altimeter = altimeter.Insert(2, ".");
+
+                    
+
+                    decodedMetar.AppendLine("Altimeter: " + altimeter + " inHg");
                 }
                 else if (altimeter[0] == 'Q')
                 {
@@ -581,6 +587,52 @@ namespace MetarAppWPF
                     decodedMetar.AppendLine("Altimeter: " + altimeter + " hPa");
                 }
             }
+        }
+
+        private static string ConvertPressure(string pressure, bool hPa)
+        {
+            if(hPa)
+            {
+                // Convert hPa to inHg
+                float p = float.Parse(pressure);
+                
+                float newInHg = p / 33.863886666667f;
+
+                return newInHg.ToString();
+            }
+            else
+            {
+                // Convert inHg to hPa
+
+                float p = float.Parse(pressure);
+
+                float newHpa = p * 33.863886666667f;
+
+                return newHpa.ToString();
+            }
+        }
+
+        private static void GetSeaLevelPressure(Regex sea_level_pressure_regex, string metar)
+        {
+            Match match;
+            string sea_level_pressure = "";
+            string hpa = "10";
+
+            match = sea_level_pressure_regex.Match(metar);
+
+            if (match.Success)
+            {
+                sea_level_pressure = match.Value;
+                sea_level_pressure = sea_level_pressure.Remove(0, 3);
+
+                hpa += sea_level_pressure;
+
+                hpa = hpa.Insert(4, ".");
+
+                decodedMetar.AppendLine("Sea Level Pressure: " + hpa + " hPa");
+            }
+            
+
         }
 
         private static void GetWeather(out MatchCollection matches, string metar, Regex remarks_regex, Regex weather_regex, Dictionary<string, string> weatherMap)
