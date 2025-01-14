@@ -11,15 +11,15 @@ Open Visual Studio, select 'open a project or solution'
 Navigate to the new folder and select MetarAppWPF.sln
 
 ## Usage
-On running the application, you will see the main menu of the application
+On running the application, you will see the main menu
 
-![MetarAppMain](https://github.com/ofiber/MetarParser/assets/61956298/838cdc78-4a9e-4e3a-9f2a-8a250aa9084c)
+![readmeImg1](https://github.com/ofiber/MetarParser/assets/61956298/4f4958d4-879e-413c-ad0b-f116d7d1cc9c)
 
 Enter the ICAO of the airport you want to parse the METAR for
 
 The results of the request will be displayed on the next page
 
-![MetarAppResults](https://github.com/ofiber/MetarParser/assets/61956298/c2f7ebbf-a104-401b-aa06-2bc19e9304d7)
+![readmeImg2](https://github.com/ofiber/MetarParser/assets/61956298/6f312521-a697-4ef5-b2d6-548f68b8ef95)
 
 The original encoded METAR is displayed on top
 
