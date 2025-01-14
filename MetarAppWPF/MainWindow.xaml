@@ -11,21 +11,22 @@
     </Window.Background>
     <Grid>
         <Label x:Name="icaoLbl" FontFamily="CommitMono" FontSize="24" FontWeight="Bold" Background="{x:Null}" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Margin="0,-150,0,50" Width="200" Height="35">Enter an ICAO</Label>
-        <TextBox x:Name="icaoTB" BorderThickness="1" Width="90" Height="30" FontFamily="CommitMono" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Margin="0,-130,96,0" Background="{x:Null}"/>
-        <Button x:Name="submitIcaoBtn" Click="SubmitICAOBtn_Click" FontFamily="CommitMono" FontSize="20" FontWeight="Bold" Background="{x:Null}" Width="80" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="106,-130,0,0">SUBMIT</Button>
+        <TextBox x:Name="icaoTB" CharacterCasing="Upper" Style="{DynamicResource RoundTextBox}" KeyDown="icaoTB_KeyDown" BorderThickness="1" Width="90" Height="30" FontFamily="CommitMono" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Margin="0,-130,96,0" Background="{x:Null}"/>
+        <Button x:Name="submitIcaoBtn" Style="{DynamicResource RoundButton}"  Click="SubmitICAOBtn_Click" FontFamily="CommitMono" FontSize="20" FontWeight="Bold" Background="{x:Null}" Width="80" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="106,-130,0,0">SUBMIT</Button>
         
         <Label x:Name="metarLbl" Margin="0, 55, 0, 0" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="CommitMono" FontSize="24" FontWeight="Bold">Enter a METAR</Label>
-        <TextBox x:Name="usrMetarTb" Margin="0, 120, 0, 0" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="CommitMono" FontSize="24" FontWeight="Bold" Width="200" Height="30" Background="{x:Null}"></TextBox>
-        <Button x:Name="submitMetarBtn" Click="SubmitMETARBtn_Click" Margin="0, 195, 0, 0" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="CommitMono" FontSize="20" FontWeight="Bold" Background="{x:Null}" Width="80" Height="30">SUBMIT</Button>
-        
-        <Button x:Name="exitBtn" Click="ExitBtn_Click" Panel.ZIndex="1" Margin="15" Background="{x:Null}" FontFamily="CommitMono" FontSize="20" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="80" Height="30">EXIT</Button>
-        <Button x:Name="backBtn" Click="BackBtn_Click" Panel.ZIndex="1" Margin="15, 50" FontFamily="CommitMono" FontSize="20" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{x:Null}" Width="80" Height="30">BACK</Button>
-        <TextBox x:Name="metarTbEnc" BorderBrush="{x:Null}" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="880" Height="130" FontFamily="CommitMono" FontWeight="Bold" FontSize="22" Visibility="Hidden" Margin="0,10,0,0" IsReadOnly="True">
+        <TextBox x:Name="usrMetarTb" CharacterCasing="Upper" Style="{DynamicResource RoundTextBox}" KeyDown="usrMetarTb_KeyDown" Margin="0, 120, 0, 0" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="CommitMono" FontSize="24" FontWeight="Bold" Width="200" Height="30" Background="{x:Null}"></TextBox>
+        <Button x:Name="submitMetarBtn" Style="{DynamicResource RoundButton}" Click="SubmitMETARBtn_Click" Margin="0, 195, 0, 0" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="CommitMono" FontSize="20" FontWeight="Bold" Background="{x:Null}" Width="80" Height="30" BorderBrush="#FF707070">SUBMIT</Button>
+
+
+        <Button x:Name="exitBtn" Style="{DynamicResource RoundButton}" Click="ExitBtn_Click" Panel.ZIndex="1" Margin="15" Background="{x:Null}" FontFamily="CommitMono" FontSize="20" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="80" Height="30">EXIT</Button>
+        <Button x:Name="backBtn" Style="{DynamicResource RoundButton}" Click="BackBtn_Click" Panel.ZIndex="1" Margin="15, 50" FontFamily="CommitMono" FontSize="20" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{x:Null}" Width="80" Height="30">BACK</Button>
+        <TextBox x:Name="metarTbEnc" Style="{DynamicResource RoundTextBox}" BorderThickness="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="880" Height="130" FontFamily="CommitMono" FontWeight="Bold" FontSize="22" Visibility="Hidden" Margin="0,10,0,0" IsReadOnly="True">
             <TextBox.Background>
                 <SolidColorBrush Color="#FF5F8798" Opacity="0.15"/>
             </TextBox.Background>
         </TextBox>
-        <TextBox x:Name="metarTbDec" BorderBrush="{x:Null}" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="880" Height="372" FontFamily="CommitMono" FontWeight="Bold" FontSize="22" Visibility="Hidden" Margin="0,145,0,0" IsReadOnly="True">
+        <TextBox x:Name="metarTbDec" Style="{DynamicResource RoundTextBox}" BorderThickness="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="880" Height="372" FontFamily="CommitMono" FontWeight="Bold" FontSize="22" Visibility="Hidden" Margin="0,145,0,0" IsReadOnly="True" Focusable="False">
             <TextBox.Background>
                 <SolidColorBrush Color="#FF5F8798" Opacity="0.15"/>
             </TextBox.Background>
