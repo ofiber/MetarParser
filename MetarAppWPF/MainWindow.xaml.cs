@@ -52,15 +52,9 @@ namespace MetarAppWPF
                 return;
             }
 
-            // Show the METAR page, hide ICAO page
-            ICAOPage();
-
+            // Set progress bar to visible, and run the progress method
             progressBar.Visibility = Visibility.Visible;
-
             Progress();
-
-
-//            METARPage();
 
             // Parse the METAR
             MetarParser.GetParsedMetar(metar);
@@ -72,8 +66,12 @@ namespace MetarAppWPF
 
         private async void Progress()
         {
-            await Task.Delay(5000);
+            // Wait 1.75 seconds before hiding the progress bar
+            await Task.Delay(1750);
             progressBar.Visibility = Visibility.Hidden;
+
+            // Hide main menu elements, show METAR display elements
+            ICAOPage();
             METARPage();
         }
 

@@ -17,7 +17,11 @@
         <Label x:Name="metarLbl" Margin="0, 55, 0, 0" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="CommitMono" FontSize="24" FontWeight="Bold">Enter a METAR</Label>
         <TextBox x:Name="usrMetarTb" CharacterCasing="Upper" Style="{DynamicResource RoundTextBox}" KeyDown="usrMetarTb_KeyDown" Margin="0, 120, 0, 0" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="CommitMono" FontSize="24" FontWeight="Bold" Width="200" Height="30" Background="{x:Null}"></TextBox>
         <Button x:Name="submitMetarBtn" Style="{DynamicResource RoundButton}" Click="SubmitMETARBtn_Click" Margin="0, 195, 0, 0" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="CommitMono" FontSize="20" FontWeight="Bold" Background="{x:Null}" Width="80" Height="30" BorderBrush="#FF707070">SUBMIT</Button>
-        <ProgressBar x:Name="progressBar" IsIndeterminate="True" Style="{DynamicResource RoundProgressBar}" Minimum="0" Maximum="100" Margin="0, 350, 0, 0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="200" Height="20" Background="{x:Null}" Visibility="Hidden"/>
+        <ProgressBar x:Name="progressBar" IsIndeterminate="True" Style="{DynamicResource RoundProgressBar}" Minimum="0" Maximum="100" Margin="0, 350, 0, 0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="200" Height="20" Background="{x:Null}" Visibility="Hidden">
+            <ProgressBar.Foreground>
+                <ImageBrush ImageSource="/aircraft_icon.png" TileMode="None"/>
+            </ProgressBar.Foreground>
+        </ProgressBar>
 
 
         <Button x:Name="exitBtn" Style="{DynamicResource RoundButton}" Click="ExitBtn_Click" Panel.ZIndex="1" Margin="15" Background="{x:Null}" FontFamily="CommitMono" FontSize="20" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="80" Height="30">EXIT</Button>
