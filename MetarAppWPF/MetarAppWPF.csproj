@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="aircraft_icon.png" />
     <None Remove="upscaler-bkg_2-2x.jpg" />
   </ItemGroup>
 
@@ -17,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="aircraft_icon.png" />
     <Resource Include="upscaler-bkg_2-2x.jpg" />
   </ItemGroup>
 

@@ -24,6 +24,11 @@
                     <Setter Property="CornerRadius" Value="5"/>
                 </Style>
             </Style.Resources>
+            <Setter Property="Control.Foreground">
+                <Setter.Value>
+                    <ImageBrush ImageSource="\aircraft_icon.png"/>
+                </Setter.Value>
+            </Setter>
         </Style>
     </Application.Resources>
 </Application>
