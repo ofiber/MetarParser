@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MetarAppWPF"
         mc:Ignorable="d"        
-        Title="MainWindow" Height="550" Width="900">
+        Title="MainWindow" Height="550" Width="900" KeyDown="Window_KeyDown">
     <Window.Background>
         <ImageBrush ImageSource="/upscaler-bkg_2-2x.jpg"/>
     </Window.Background>
@@ -17,10 +17,11 @@
         <Label x:Name="metarLbl" Margin="0, 55, 0, 0" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="CommitMono" FontSize="24" FontWeight="Bold">Enter a METAR</Label>
         <TextBox x:Name="usrMetarTb" CharacterCasing="Upper" Style="{DynamicResource RoundTextBox}" KeyDown="usrMetarTb_KeyDown" Margin="0, 120, 0, 0" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="CommitMono" FontSize="24" FontWeight="Bold" Width="200" Height="30" Background="{x:Null}"></TextBox>
         <Button x:Name="submitMetarBtn" Style="{DynamicResource RoundButton}" Click="SubmitMETARBtn_Click" Margin="0, 195, 0, 0" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="CommitMono" FontSize="20" FontWeight="Bold" Background="{x:Null}" Width="80" Height="30" BorderBrush="#FF707070">SUBMIT</Button>
+        <ProgressBar x:Name="progressBar" IsIndeterminate="True" Style="{DynamicResource RoundProgressBar}" Minimum="0" Maximum="100" Margin="0, 350, 0, 0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="200" Height="20" Background="{x:Null}" Visibility="Hidden"/>
 
 
         <Button x:Name="exitBtn" Style="{DynamicResource RoundButton}" Click="ExitBtn_Click" Panel.ZIndex="1" Margin="15" Background="{x:Null}" FontFamily="CommitMono" FontSize="20" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="80" Height="30">EXIT</Button>
-        <Button x:Name="backBtn" Style="{DynamicResource RoundButton}" Click="BackBtn_Click" Panel.ZIndex="1" Margin="15, 50" FontFamily="CommitMono" FontSize="20" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{x:Null}" Width="80" Height="30">BACK</Button>
+        <Button x:Name="backBtn" Style="{DynamicResource RoundButton}" Click="BackBtn_Click" Panel.ZIndex="1" Margin="15, 50" FontFamily="CommitMono" FontSize="20" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="{x:Null}" Width="80" Height="30" Visibility="Hidden">BACK</Button>
         <TextBox x:Name="metarTbEnc" Style="{DynamicResource RoundTextBox}" BorderThickness="0" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="880" Height="130" FontFamily="CommitMono" FontWeight="Bold" FontSize="22" Visibility="Hidden" Margin="0,10,0,0" IsReadOnly="True">
             <TextBox.Background>
                 <SolidColorBrush Color="#FF5F8798" Opacity="0.15"/>

@@ -40,10 +40,8 @@ namespace MetarAppWPF
                 ValidateAltimeter(metar)
             };
 
-            if(GetValidation(arr))
-                return true;
-            else
-                return false;
+            // Check if all values are valid
+            return GetValidation(arr);
         }
 
         private static bool GetValidation(string[] arr)

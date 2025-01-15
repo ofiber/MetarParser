@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.ComponentModel;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows;
@@ -53,7 +54,13 @@ namespace MetarAppWPF
 
             // Show the METAR page, hide ICAO page
             ICAOPage();
-            METARPage();
+
+            progressBar.Visibility = Visibility.Visible;
+
+            Progress();
+
+
+//            METARPage();
 
             // Parse the METAR
             MetarParser.GetParsedMetar(metar);
@@ -61,6 +68,13 @@ namespace MetarAppWPF
             // Write original and parsed METAR to text boxes
             metarTbEnc.Text = MetarParser.GetEncodedMetarAsString();
             metarTbDec.Text = MetarParser.GetDecodedMetarAsString();
+        }
+
+        private async void Progress()
+        {
+            await Task.Delay(5000);
+            progressBar.Visibility = Visibility.Hidden;
+            METARPage();
         }
 
         private void SubmitMETARBtn_Click(object sender, RoutedEventArgs e)
@@ -120,7 +134,6 @@ namespace MetarAppWPF
                 metarLbl.Visibility = Visibility.Hidden;
                 usrMetarTb.Visibility = Visibility.Hidden;
                 submitMetarBtn.Visibility = Visibility.Hidden;
-                backBtn.Visibility = Visibility.Hidden;
             }
             else
             {
@@ -130,7 +143,6 @@ namespace MetarAppWPF
                 metarLbl.Visibility = Visibility.Visible;
                 usrMetarTb.Visibility= Visibility.Visible;
                 submitMetarBtn.Visibility= Visibility.Visible;
-                backBtn.Visibility = Visibility.Visible;
             }
         }
 
@@ -161,6 +173,12 @@ namespace MetarAppWPF
         {
             if(e.Key == System.Windows.Input.Key.Enter)
                 SubmitMETARBtn_Click(sender, e);
+        }
+
+        private void Window_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Escape && backBtn.Visibility == Visibility.Visible)
+                BackBtn_Click(sender, e);
         }
     }
 
