@@ -4,7 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MetarAppWPF"
-        mc:Ignorable="d"        
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
         Title="MainWindow" Height="550" Width="900" KeyDown="Window_KeyDown">
     <Window.Background>
         <ImageBrush ImageSource="/upscaler-bkg_2-2x.jpg"/>
@@ -17,7 +18,7 @@
         <Label x:Name="metarLbl" Margin="0, 55, 0, 0" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="CommitMono" FontSize="24" FontWeight="Bold">Enter a METAR</Label>
         <TextBox x:Name="usrMetarTb" CharacterCasing="Upper" Style="{DynamicResource RoundTextBox}" KeyDown="usrMetarTb_KeyDown" Margin="0, 120, 0, 0" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="CommitMono" FontSize="24" FontWeight="Bold" Width="200" Height="30" Background="{x:Null}"></TextBox>
         <Button x:Name="submitMetarBtn" Style="{DynamicResource RoundButton}" Click="SubmitMETARBtn_Click" Margin="0, 195, 0, 0" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="CommitMono" FontSize="20" FontWeight="Bold" Background="{x:Null}" Width="80" Height="30" BorderBrush="#FF707070">SUBMIT</Button>
-        <ProgressBar Visibility="Hidden" x:Name="progressBar" IsIndeterminate="True" Style="{DynamicResource RoundProgressBar}" BorderThickness="0" Minimum="0" Maximum="100" Margin="0, 350, 0, 0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="200" Height="65" Background="{x:Null}"></ProgressBar>
+        <ProgressBar Visibility="Hidden" x:Name="progressBar" IsIndeterminate="True" Style="{DynamicResource RoundProgressBar}" BorderThickness="0" Minimum="0" Maximum="100" Margin="0, 350, 0, 0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="500" Height="100" Background="{x:Null}"></ProgressBar>
 
 
         <Button x:Name="exitBtn" Style="{DynamicResource RoundButton}" Click="ExitBtn_Click" Panel.ZIndex="1" Margin="15" Background="{x:Null}" FontFamily="CommitMono" FontSize="20" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="80" Height="30">EXIT</Button>

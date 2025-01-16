@@ -97,8 +97,15 @@ namespace MetarAppWPF
         private void ExitBtn_Click(object sender, RoutedEventArgs e)
         {
             // Shutdown the application on exit button click
-            Application.Current.Shutdown();
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to exit?", "Exit", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+            if(result == MessageBoxResult.Yes)
+                Application.Current.Shutdown();
+            else
+                return;
         }
+
+        // Function to press escape and quit application
 
         private void BackBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -177,6 +184,8 @@ namespace MetarAppWPF
         {
             if (e.Key == System.Windows.Input.Key.Escape && backBtn.Visibility == Visibility.Visible)
                 BackBtn_Click(sender, e);
+            else if(e.Key == System.Windows.Input.Key.Escape && backBtn.Visibility == Visibility.Hidden)
+                ExitBtn_Click(sender, e);
         }
     }
 
