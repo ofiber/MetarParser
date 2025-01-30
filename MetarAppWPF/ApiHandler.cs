@@ -1,9 +1,10 @@
-﻿#pragma warning disable SYSLIB0014 // Disable warning for WebRequest obselescence
+﻿//#pragma warning disable SYSLIB0014 // Disable warning for WebRequest obselescence
 #pragma warning disable CS8600     // Disable warning for nullable reference type
 
 using System;
 using System.Net;
 using System.IO;
+using System.Net.Http;
 
 namespace MetarAppWPF
 {
@@ -16,32 +17,38 @@ namespace MetarAppWPF
 
             try
             {
-                // Create a new web request
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+                HttpClient client = new HttpClient();
+                using HttpResponseMessage res = client.GetAsync(url).Result;
 
-                // Set the request headers
-                request.Method = "GET";
+                response = res.Content.ReadAsStringAsync().Result;
+                //Console.WriteLine(res.Content.ReadAsStringAsync().Result);
 
-                // Get the response
-                using (HttpWebResponse webResponse = (HttpWebResponse)request.GetResponse())
-                {
+                //// Create a new web request
+                //HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
 
-                    if(webResponse.ContentLength == 0)
-                    {
-                        return false;
-                    }
+                //// Set the request headers
+                //request.Method = "GET";
 
-                    // Read the response stream
-                    using (Stream stream = webResponse.GetResponseStream())
-                    {
-                        // Read the response
-                        using (StreamReader reader = new StreamReader(stream))
-                        {
-                            // Set the response string
-                            response = reader.ReadToEnd();
-                        }
-                    }
-                }
+                //// Get the response
+                //using (HttpWebResponse webResponse = (HttpWebResponse)request.GetResponse())
+                //{
+
+                //    if(webResponse.ContentLength == 0)
+                //    {
+                //        return false;
+                //    }
+
+                //    // Read the response stream
+                //    using (Stream stream = webResponse.GetResponseStream())
+                //    {
+                //        // Read the response
+                //        using (StreamReader reader = new StreamReader(stream))
+                //        {
+                //            // Set the response string
+                //            response = reader.ReadToEnd();
+                //        }
+                //    }
+                //}
 
                 // Return true if the request was successful
                 return true;
