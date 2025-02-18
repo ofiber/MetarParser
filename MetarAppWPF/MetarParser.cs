@@ -45,7 +45,7 @@ namespace MetarAppWPF
             Regex altimeter_regex = new Regex("(A|Q)(\\d{4})");
             Regex remarks_regex = new Regex("RMK\\s(.*)");
             Regex sea_level_pressure_regex = new Regex("\\bSLP\\d{3}\\b");
-            Regex weather_regex = new Regex("(-|\\+)?\\b(MIFG|BCFG|BR|FG|DZ|RA|SN|SG|IC|PL|GR|GS|UP|BR|HZ|FU|VA|CG|DU|SA|PY|PO|SQ|FC|SS|DS)\\b");            
+            Regex weather_regex = new Regex("(-|\\+)?\\b(MIFG|BCFG|BR|FG|DZ|RA|SN|SG|IC|PL|GR|GS|UP|BR|HZ|FU|VA|CG|DU|SA|PY|PO|SQ|FC|SS|DS|BLSN|DRSN|SHSN|SHRA|BCFG)\\b");            
             Regex percip_regex = new Regex("\\b(P\\d{4})\\b");
             Regex percip_regex2 = new Regex("\\b(6\\d{4})\\b");
             Regex percip_regex3 = new Regex("\\b(7\\d{4})\\b");
