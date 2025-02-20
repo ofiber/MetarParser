@@ -30,6 +30,12 @@ namespace MetarAppWPF
             if (string.IsNullOrEmpty(metar))
                 return false;
 
+            // If user enters a METAR that doesn't start with "METAR", insert it
+            if(metar.Contains("METAR") == false)
+            {
+               metar = metar.Insert(0, "METAR ");
+            }
+
             string[] arr = {
                 ValidateStation(metar),
                 ValidateTime(metar),

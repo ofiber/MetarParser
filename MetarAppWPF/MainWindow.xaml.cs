@@ -86,8 +86,9 @@ namespace MetarAppWPF
                 return;
             }
 
-            ICAOPage();
-            METARPage();
+            // Set progress bar to visible, and run the progress method
+            progressBar.Visibility = Visibility.Visible;
+            Progress();
 
             MetarParser.GetParsedMetar(metar);
 
