@@ -127,6 +127,7 @@ namespace MetarAppWPF
                 metarTbDec.Clear();
 
                 icaoTB.Clear();
+                usrMetarTb.Clear();
 
                 MetarParser.ResetMetarStrings();
 
