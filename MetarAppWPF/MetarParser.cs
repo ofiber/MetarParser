@@ -20,8 +20,11 @@ namespace MetarAppWPF
 
         public static void GetParsedMetar(string metar)
         {
+            // Set application window
             var win = new MainWindow();
 
+            // Allows program to output to a text box using console output commands
+            // This was originally a console app
             Console.SetOut(new ControlWriter(win.metarTbEnc));
                         
             Dictionary<string, string> weatherMap = WeatherMap.weatherMap;
@@ -29,6 +32,7 @@ namespace MetarAppWPF
             Dictionary<string, string> cbMap = WeatherMap.cumulonimbusMap;
             Dictionary<string, string> ic = ICAODict.icaoDict;
 
+            // Regex definitions
             Regex station_regex = new Regex("METAR\\s(\\w{4})");
             Regex time_regex = new Regex("\\b(\\d{6}Z)\\b");
             Regex wind_regex = new Regex("\\b(\\d{3}|VRB)(\\d{2}|\\d{2}G\\d{2})KT\\b");
@@ -54,6 +58,7 @@ namespace MetarAppWPF
             Regex cbMovement_regex = new Regex("[NEWS]+");
             Regex nosig_regex = new Regex("\\bNOSIG\\b");
 
+            // If METAR is empty or not valid, GetMetar()
             if (string.IsNullOrEmpty(metar) || metar == "-1")
                 GetMetar(ref metar);
 
@@ -90,12 +95,16 @@ namespace MetarAppWPF
             Regex station_regex = new Regex("METAR\\s(\\w{4})");
             MatchCollection m;
 
+            // Minimum METAR length is 12
             if (metar.Length < 12)
             {
                 return false;
             }
             else
             {
+                // Rest of program relies on METAR string starting with "METAR"
+                // If user enters a METAR but doesn't include "METAR" prefix, add it
+                // METARs requested from AviationWeather API should have this prefix
                 if (!metar.Contains("METAR"))
                     metar = "METAR " + metar;
 
@@ -103,6 +112,7 @@ namespace MetarAppWPF
 
                 string i = m[0].Value;
 
+                // Checks if METAR ICAO is in the list of the world's airports
                 if (ICAODict.icaoDict.ContainsKey(i))
                     return true;
                 else

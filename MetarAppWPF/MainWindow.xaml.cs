@@ -40,6 +40,12 @@ namespace MetarAppWPF
                 MessageBox.Show(invalidLengthMsg, "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
+            else if (!ICAODict.icaoDict.ContainsKey(icao))
+            {
+                // If ICAO is not contained in list of global airports, show error message and return
+                MessageBox.Show(invalidICAOMsg, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
 
             // Get the METAR data from the API
             string metar = ApiHandler.RequestMetar(icao);
